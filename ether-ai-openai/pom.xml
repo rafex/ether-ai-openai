@@ -7,13 +7,13 @@
 	<parent>
 		<groupId>dev.rafex.ether.parent</groupId>
 		<artifactId>ether-parent</artifactId>
-		<version>8.0.0-SNAPSHOT</version>
+		<version>8.0.0</version>
 		<relativePath>../../ether-parent/ether-parent/pom.xml</relativePath>
 	</parent>
 
 	<groupId>dev.rafex.ether.ai</groupId>
 	<artifactId>ether-ai-openai</artifactId>
-	<version>8.0.0-SNAPSHOT</version>
+	<version>8.0.0</version>
 
 	<packaging>jar</packaging>
 	<name>${project.artifactId}</name>
