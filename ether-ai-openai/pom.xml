@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>dev.rafex.ether.parent</groupId>
+		<artifactId>ether-parent</artifactId>
+		<version>8.0.0-SNAPSHOT</version>
+		<relativePath>../../ether-parent/ether-parent/pom.xml</relativePath>
+	</parent>
+
+	<groupId>dev.rafex.ether.ai</groupId>
+	<artifactId>ether-ai-openai</artifactId>
+	<version>8.0.0-SNAPSHOT</version>
+
+	<packaging>jar</packaging>
+	<name>${project.artifactId}</name>
+	<url>https://rafex.dev/ether/ai/openai</url>
+
+	<description>
+		OpenAI adapter for Ether AI abstractions, intended to integrate via the official SDK.
+	</description>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/license/mit/</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/rafex/ether-ai-openai/issues</url>
+	</issueManagement>
+
+	<developers>
+		<developer>
+			<name>Raúl Eduardo González Argote</name>
+			<email>rafex@rafex.dev</email>
+			<organization>dev.rafex</organization>
+			<organizationUrl>https://rafex.dev</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/rafex/ether-ai-openai.git</connection>
+		<developerConnection>scm:git:https://github.com/rafex/ether-ai-openai.git</developerConnection>
+		<url>https://github.com/rafex/ether-ai-openai</url>
+	</scm>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>dev.rafex.ether.ai</groupId>
+			<artifactId>ether-ai-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>dev.rafex.ether.json</groupId>
+			<artifactId>ether-json</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.name}</finalName>
+	</build>
+</project>

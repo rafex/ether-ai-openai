@@ -1,0 +1,1 @@
+package dev.rafex.ether.ai.openai.config;
