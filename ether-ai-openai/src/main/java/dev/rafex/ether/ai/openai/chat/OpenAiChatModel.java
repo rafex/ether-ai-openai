@@ -62,8 +62,8 @@ public final class OpenAiChatModel implements AiChatModel {
         final JsonNode root = jsonCodec.readTree(response.body());
         final JsonNode choice = root.path("choices").path(0);
         final JsonNode messageNode = choice.path("message");
-        final var message = new AiMessage(AiMessageRole.fromWireValue(text(messageNode, "role")), text(messageNode,
-                "content"));
+        final var message = new AiMessage(AiMessageRole.fromWireValue(text(messageNode, "role")),
+                text(messageNode, "content"));
         return new AiChatResponse(text(root, "id"), text(root, "model"), message, text(choice, "finish_reason"),
                 usage(root.path("usage")));
     }

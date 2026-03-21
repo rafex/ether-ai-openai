@@ -46,8 +46,9 @@ class OpenAiChatModelTest {
 
     @Test
     void shouldCallOpenAiCompatibleChatCompletionEndpoint() throws Exception {
-        final var config = new OpenAiConfig("test-key", URI.create("http://127.0.0.1:" + server.getAddress().getPort()
-                + "/v1"), null, "org-test", "proj-test", null);
+        final var config = new OpenAiConfig("test-key",
+                URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/v1"), null, "org-test", "proj-test",
+                null);
         final var model = new OpenAiChatModel(config);
         final var response = model
                 .generate(new AiChatRequest("gpt-4.1-mini", java.util.List.of(AiMessage.user("ping")), 0.2d, 128));
