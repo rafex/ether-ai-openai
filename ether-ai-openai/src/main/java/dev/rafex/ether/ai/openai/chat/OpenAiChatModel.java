@@ -22,16 +22,35 @@ import dev.rafex.ether.ai.openai.config.OpenAiConfig;
 import dev.rafex.ether.json.JsonCodec;
 import dev.rafex.ether.json.JsonUtils;
 
+/**
+ * Implementación de {@link AiChatModel} para la API de OpenAI.
+ *
+ * <p>Envía solicitudes de chat completions a la API de OpenAI y procesa las respuestas.</p>
+ */
 public final class OpenAiChatModel implements AiChatModel {
 
     private final OpenAiConfig config;
     private final HttpClient httpClient;
     private final JsonCodec jsonCodec;
 
+    /**
+     * Crea un modelo de chat OpenAI usando la configuración proporcionada.
+     *
+     * @param config La configuración de OpenAI.
+     * @throws NullPointerException si la configuración es nula.
+     */
     public OpenAiChatModel(final OpenAiConfig config) {
         this(config, HttpClient.newBuilder().connectTimeout(config.timeout()).build(), JsonUtils.codec());
     }
 
+    /**
+     * Crea un modelo de chat OpenAI con configuración personalizada.
+     *
+     * @param config      La configuración de OpenAI.
+     * @param httpClient  El cliente HTTP a utilizar.
+     * @param jsonCodec   El codificador JSON a utilizar.
+     * @throws NullPointerException si la configuración o el cliente HTTP son nulos.
+     */
     public OpenAiChatModel(final OpenAiConfig config, final HttpClient httpClient, final JsonCodec jsonCodec) {
         this.config = Objects.requireNonNull(config, "config");
         this.httpClient = Objects.requireNonNull(httpClient, "httpClient");

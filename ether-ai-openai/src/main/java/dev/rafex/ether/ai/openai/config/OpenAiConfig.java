@@ -5,12 +5,34 @@ import java.time.Duration;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Configuración para conectarse a la API de OpenAI.
+ *
+ * @param apiKey         La clave de API para autenticar las solicitudes.
+ * @param baseUri        La URI base de la API.
+ * @param timeout        El tiempo de espera para las solicitudes HTTP.
+ * @param organization   El identificador de la organización (opcional).
+ * @param project        El identificador del proyecto (opcional).
+ * @param defaultHeaders Cabeceras HTTP por defecto para todas las solicitudes.
+ */
 public record OpenAiConfig(String apiKey, URI baseUri, Duration timeout, String organization, String project,
         Map<String, String> defaultHeaders) {
 
     private static final URI DEFAULT_BASE_URI = URI.create("https://api.openai.com/v1/");
     private static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(30);
 
+    /**
+     * Crea una nueva configuración y valida los parámetros.
+     *
+     * @param apiKey         La clave de API para autenticar las solicitudes.
+     * @param baseUri        La URI base de la API.
+     * @param timeout        El tiempo de espera para las solicitudes HTTP.
+     * @param organization   El identificador de la organización (opcional).
+     * @param project        El identificador del proyecto (opcional).
+     * @param defaultHeaders Cabeceras HTTP por defecto para todas las solicitudes.
+     * @throws NullPointerException si la apiKey es nula.
+     * @throws IllegalArgumentException si la apiKey está en blanco.
+     */
     public OpenAiConfig {
         Objects.requireNonNull(apiKey, "apiKey");
         if (apiKey.isBlank()) {
@@ -23,10 +45,21 @@ public record OpenAiConfig(String apiKey, URI baseUri, Duration timeout, String 
         defaultHeaders = defaultHeaders == null ? Map.of() : Map.copyOf(defaultHeaders);
     }
 
+    /**
+     * Crea una configuración con valores por defecto.
+     *
+     * @param apiKey La clave de API.
+     * @return La configuración creada.
+     */
     public static OpenAiConfig of(final String apiKey) {
         return new OpenAiConfig(apiKey, DEFAULT_BASE_URI, DEFAULT_TIMEOUT, "", "", Map.of());
     }
 
+    /**
+     * Devuelve la URI para generar respuestas de chat.
+     *
+     * @return La URI de completions de chat.
+     */
     public URI chatCompletionsUri() {
         return baseUri.resolve("chat/completions");
     }
